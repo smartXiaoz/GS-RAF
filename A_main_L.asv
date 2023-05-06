@@ -1,0 +1,24 @@
+clear all;
+close all;
+
+LL = 2:1:50;
+LEN = size(LL, 2);
+parfor ii = 1 : LEN
+    L = LL(ii);
+    [Err_GAF, ERR_S(ii)] = F_GS_RAF_L(L, 3);       
+    disp(ii)
+end
+
+figure
+box on
+wid = 3;
+MarkerSize = 6;
+
+plot(ERR_S, '-b', 'LineWidth', wid, 'Marker', 'd', 'MarkerSize', MarkerSize, 'MarkerFaceColor', 'b')
+h=legend('GS-RAF(\lambda=0.995, \xi=3)');
+set(h,'FontName','Times New Roman','FontSize',24,'FontWeight','normal');
+set(gca,'fontsize',24);
+set(gca,'fontsize',24);
+xlabel('The node number L','FontSize',24);
+ylabel('MSDs(dB)','FontSize',24);
+
